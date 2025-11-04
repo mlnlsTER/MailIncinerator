@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
 
-    @State private var isTrash: Bool = true
+    @State private var deletePermanently: Bool = false
     @StateObject var vm = MailCleanerViewModel()
     
     var body: some View {
@@ -11,22 +11,23 @@ struct ContentView: View {
         } else {
             VStack {
                 if vm.isScanning {
-                    ProgressView(value: vm.progress) {
+                    ProgressView() {
                         Text("Scanning cache...")
                     }
                     .padding()
                 } else {
-                    Text("Cache: \(ByteCountFormatter.string(fromByteCount: vm.totalSize, countStyle: .file))")
+                    Text("Caches: \(ByteCountFormatter.string(fromByteCount: vm.totalSize, countStyle: .file))")
                         .font(.headline)
                         .foregroundStyle(Color(.systemGray))
                 }
 
-                Toggle(" Delete permanently", isOn: $isTrash)
+                Button("Scan") { Task { await vm.scan() } }
+                Toggle(" Delete permanently", isOn: $deletePermanently)
 
-                Button("Rescan") { Task { await vm.scan() } }
                     .disabled(vm.isScanning)
                     .padding(.top, 20)
-                Button("Clear") { Task { await vm.clear(deletePermanently: isTrash) } }
+                Button("Clear") { Task { await vm.clear(deletePermanently: deletePermanently) } }
+                    .disabled(vm.emptyCache)
             }
             .padding()
         }
@@ -35,4 +36,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+    //FullDiskAccessHelpView()
 }

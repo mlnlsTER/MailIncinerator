@@ -1,9 +1,4 @@
-//
-//  CacheManager.swift
-//
-
 import Foundation
-
 
 public protocol CacheDeleterProtocol {
     /// Permanently delete given URLs. Throws on first failure.
@@ -28,8 +23,7 @@ public class MailCacheDeleter: CacheDeleterProtocol {
         if let url = baseCacheURL {
             self.baseCacheURL = url
         } else {
-            self.baseCacheURL = fileManager.homeDirectoryForCurrentUser
-                .appendingPathComponent("Library/Mail", isDirectory: true)
+            self.baseCacheURL = URL(filePath: CacheConstants.mailPath)
         }
     }
 
@@ -51,13 +45,29 @@ public class MailCacheDeleter: CacheDeleterProtocol {
     }
 
     public func moveToTrash(urls: [URL]) async throws {
+        var resultingItemURL: NSURL?
         for url in urls {
             try ensureInsideBase(url)
             do {
-                try fileManager.trashItem(at: url, resultingItemURL: nil)
+                try fileManager.trashItem(at: url, resultingItemURL: &resultingItemURL)
             } catch {
                 throw Error.trashFailed(url, underlying: error)
             }
         }
+    }
+}
+
+final class MockDeleter: CacheDeleterProtocol {
+    var deletedURLs: [URL] = []
+    var trashedURLs: [URL] = []
+    var shouldThrow = false
+    
+    func deletePermanently(urls: [URL]) async throws {
+        if shouldThrow { throw NSError(domain: "Test", code: 1) }
+        deletedURLs.append(contentsOf: urls)
+    }
+    func moveToTrash(urls: [URL]) async throws {
+        if shouldThrow { throw NSError(domain: "Test", code: 2) }
+        trashedURLs.append(contentsOf: urls)
     }
 }
