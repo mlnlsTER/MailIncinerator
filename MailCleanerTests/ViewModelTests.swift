@@ -5,60 +5,109 @@ import XCTest
 final class ViewModelTests: XCTestCase {
     var scanner: MockScanner!
     var deleter: MockDeleter!
-    var sut: MailCleanerViewModel!
+    var sutMAS: MailCleanerViewModel!
+    var sutPublic: MailCleanerViewModel!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         scanner = MockScanner()
         deleter = MockDeleter()
-        sut = MailCleanerViewModel(scanner: scanner, deleter: deleter)
+        sutMAS = MailCleanerViewModel(mode: .appStore, scanner: scanner, deleter: deleter)
+        sutPublic = MailCleanerViewModel(mode: .public, scanner: scanner, deleter: deleter)
     }
 
     override func tearDownWithError() throws {
         scanner = nil
         deleter = nil
-        //sut = nil
+        //sutMAS = nil
+        //sutPublic = nil
         try super.tearDownWithError()
     }
 
-    func testEmptyCache() async throws {
+    // MARK: - AppStore Mode Tests
+
+    func testMAS_EmptyCache() async throws {
         scanner.result = .success([])
-        await sut.scan()
-        XCTAssertTrue(sut.emptyCache)
-        XCTAssertEqual(sut.cacheFolders.count, 0)
-        XCTAssertEqual(sut.totalSize, 0)
+        await sutMAS.scan()
+        XCTAssertTrue(sutMAS.emptyCache)
+        XCTAssertEqual(sutMAS.cacheFolders.count, 0)
+        XCTAssertEqual(sutMAS.totalSize, 0)
     }
     
-    func testNonEmptyCache() async throws {
+    func testMAS_NonEmptyCache() async throws {
         let info = CacheFolderInfo(url: URL(fileURLWithPath: "/tmp/X"), size: 123)
         scanner.result = .success([info])
-        await sut.scan()
-        XCTAssertFalse(sut.emptyCache)
-        XCTAssertEqual(sut.cacheFolders, [info])
-        XCTAssertEqual(sut.totalSize, 123)
+        await sutMAS.scan()
+        XCTAssertFalse(sutMAS.emptyCache)
+        XCTAssertEqual(sutMAS.cacheFolders, [info])
+        XCTAssertEqual(sutMAS.totalSize, 123)
     }
     
-    func testScanErrorSetsDiskAccessRequired() async throws {
+    func testMAS_ScanErrorSetsDiskAccessRequired() async throws {
         scanner.result = .failure(NSError(domain: "Test", code: 1))
-        await sut.scan()
-        XCTAssertTrue(sut.fullDiskAccessRequired)
+        await sutMAS.scan()
+        XCTAssertTrue(sutMAS.fullDiskAccessRequired)
     }
     
-    func testClearDeletesPermanently() async throws {
+    func testMAS_ClearDeletesPermanently() async throws {
         let info = CacheFolderInfo(url: URL(fileURLWithPath: "/tmp/X"), size: 123)
-        sut.cacheFolders = [info]
-        await sut.clear(deletePermanently: true)
+        sutMAS.cacheFolders = [info]
+        await sutMAS.clear(deletePermanently: true)
         XCTAssertEqual(deleter.deletedURLs, [info.url])
-        XCTAssertEqual(sut.cacheFolders.count, 0)
-        XCTAssertEqual(sut.totalSize, 0)
+        XCTAssertEqual(sutMAS.cacheFolders.count, 0)
+        XCTAssertEqual(sutMAS.totalSize, 0)
     }
     
-    func testClearMovesToTrash() async throws {
+    func testMAS_ClearMovesToTrash() async throws {
         let info = CacheFolderInfo(url: URL(fileURLWithPath: "/tmp/X"), size: 123)
-        sut.cacheFolders = [info]
-        await sut.clear(deletePermanently: false)
+        sutMAS.cacheFolders = [info]
+        await sutMAS.clear(deletePermanently: false)
         XCTAssertEqual(deleter.trashedURLs, [info.url])
-        XCTAssertEqual(sut.cacheFolders.count, 0)
-        XCTAssertEqual(sut.totalSize, 0)
+        XCTAssertEqual(sutMAS.cacheFolders.count, 0)
+        XCTAssertEqual(sutMAS.totalSize, 0)
+    }
+
+    // MARK: - Public Mode Tests
+
+    func testPublic_EmptyCache() async throws {
+        scanner.result = .success([])
+        await sutPublic.scan()
+        XCTAssertTrue(sutPublic.emptyCache)
+        XCTAssertEqual(sutPublic.cacheFolders.count, 0)
+        XCTAssertEqual(sutPublic.totalSize, 0)
+    }
+    
+    func testPublic_NonEmptyCache() async throws {
+        let info = CacheFolderInfo(url: URL(fileURLWithPath: "/tmp/X"), size: 123)
+        scanner.result = .success([info])
+        await sutPublic.scan()
+        XCTAssertFalse(sutPublic.emptyCache)
+        XCTAssertEqual(sutPublic.cacheFolders, [info])
+        XCTAssertEqual(sutPublic.totalSize, 123)
+    }
+    
+    func testPublic_ScanErrorSetsDiskAccessRequired() async throws {
+        scanner.result = .failure(NSError(domain: "Test", code: 1))
+        await sutPublic.scan()
+        XCTAssertTrue(sutPublic.fullDiskAccessRequired)
+    }
+    
+    func testPublic_ClearDeletesPermanently() async throws {
+        let info = CacheFolderInfo(url: URL(fileURLWithPath: "/tmp/X"), size: 123)
+        sutPublic.cacheFolders = [info]
+        await sutPublic.clear(deletePermanently: true)
+        XCTAssertEqual(deleter.deletedURLs, [info.url])
+        XCTAssertEqual(sutPublic.cacheFolders.count, 0)
+        XCTAssertEqual(sutPublic.totalSize, 0)
+    }
+    
+    func testPublic_ClearMovesToTrash() async throws {
+        let info = CacheFolderInfo(url: URL(fileURLWithPath: "/tmp/X"), size: 123)
+        sutPublic.cacheFolders = [info]
+        await sutPublic.clear(deletePermanently: false)
+        XCTAssertEqual(deleter.trashedURLs, [info.url])
+        XCTAssertEqual(sutPublic.cacheFolders.count, 0)
+        XCTAssertEqual(sutPublic.totalSize, 0)
     }
 }
+

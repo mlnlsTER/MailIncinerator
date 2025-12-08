@@ -1,9 +1,11 @@
-// Например, в AppDelegate.swift или ContentView.swift
+// Режимы работы
+
+import Foundation
 
 #if APPSTORE
-let dependencies = ProdDependencies(mode: .appStore)
+let dependencies = ProdDependencies(mode: .appstore)
 #else
-let dependencies = ProdDependencies(mode: .public)
+let dependencies = ProdDependencies(mode: .public, baseURL: URL(string: CacheConstants.mailPath))
 #endif
 
 let viewModel = MailCleanerViewModel(dependencies: dependencies)

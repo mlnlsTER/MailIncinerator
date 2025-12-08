@@ -1,61 +1,61 @@
 {
   "images" : [
     {
-      "filename" : "mailcleaner16.png",
+      "filename" : "MailCleanerIcon-macOS-Default-16x16@1x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
-      "filename" : "mailcleaner32 1.png",
+      "filename" : "MailCleanerIcon-macOS-Default-16x16@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
-      "filename" : "mailcleaner32.png",
+      "filename" : "MailCleanerIcon-macOS-Default-32x32@1x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
-      "filename" : "mailcleaner64.png",
+      "filename" : "MailCleanerIcon-macOS-Default-32x32@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "mailcleaner128.png",
+      "filename" : "MailCleanerIcon-macOS-Default-128x128@1x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "mailcleaner256 1.png",
+      "filename" : "MailCleanerIcon-macOS-Default-128x128@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "mailcleaner256.png",
+      "filename" : "MailCleanerIcon-macOS-Default-256x256@1x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "mailcleaner512 1.png",
+      "filename" : "MailCleanerIcon-macOS-Default-256x256@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "mailcleaner512.png",
+      "filename" : "MailCleanerIcon-macOS-Default-512x512@1x.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "89cdde78b6937850344053a624ea1943d5f6bdd83b6a086979563f1911f726ce.png",
+      "filename" : "MailCleanerIcon-macOS-Default-1024x1024@1x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"

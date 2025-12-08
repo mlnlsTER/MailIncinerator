@@ -1,7 +1,3 @@
-//
-//  CacheScanner.swift
-//
-
 import Foundation
 
 public struct CacheFolderInfo: Equatable {
@@ -13,7 +9,7 @@ public protocol CacheScannerProtocol {
     func scan(baseURL: URL?) async throws -> [CacheFolderInfo]
 }
 
-public struct MailCacheScanner: CacheScannerProtocol {
+public struct MailCacheScanner: CacheScannerProtocol, Equatable {
     public enum Error: Swift.Error {
         case baseNotFound
         case invalidCandidate(URL)
@@ -31,7 +27,7 @@ public struct MailCacheScanner: CacheScannerProtocol {
             self.baseCacheURL = URL(filePath: CacheConstants.mailPath)
         }
     }
-
+    
     public func scan(baseURL: URL? = nil) async throws -> [CacheFolderInfo] {
         let base = baseURL ?? baseCacheURL
         guard fileManager.fileExists(atPath: base.path) else {
@@ -51,46 +47,61 @@ public struct MailCacheScanner: CacheScannerProtocol {
 
             // Inside V# directory, gather its top-level folders except MailData and non-directories
             let vContents = try fileManager.contentsOfDirectory(at: item, includingPropertiesForKeys: [.isDirectoryKey], options: [.skipsHiddenFiles])
-            for candidate in vContents {
-                if candidate.lastPathComponent == "MailData" { continue }
-                var isDir: ObjCBool = false
-                if fileManager.fileExists(atPath: candidate.path, isDirectory: &isDir), isDir.boolValue {
-
-                    // Safety: ensure candidate path is contained within base
-                    let baseResolved = base.resolvingSymlinksInPath()
-                    let candidateResolved = candidate.resolvingSymlinksInPath()
-                    guard candidateResolved.path.hasPrefix(baseResolved.path + "/") else {
-                        throw Error.invalidCandidate(candidate)
+            
+            let subfolderInfos = try await withThrowingTaskGroup(of: CacheFolderInfo?.self) { group in
+                for candidate in vContents {
+                    group.addTask {
+                        if candidate.lastPathComponent == "MailData" { return nil }
+                        var isDir: ObjCBool = false
+                        let localFileManager = FileManager()
+                        if localFileManager.fileExists(atPath: candidate.path, isDirectory: &isDir), isDir.boolValue {
+                            // Safety: ensure candidate path is contained within base
+                            guard candidate.resolvingSymlinksInPath().path.hasPrefix(base.resolvingSymlinksInPath().path + "/") else {
+                                throw Error.invalidCandidate(candidate)
+                            }
+                            // Calculate the size of the catalog
+                            let size = try await directorySize(at: candidate)
+                            return CacheFolderInfo(url: candidate, size: size)
+                        }
+                        return nil
                     }
-                    
-                    // Calculate the size of the catalog
-                    let size = try await directorySize(at: candidate)
-                    result.append(CacheFolderInfo(url: candidate, size: size))
                 }
+                var subfolderInfos: [CacheFolderInfo] = []
+                for try await info in group {
+                    if let info = info {
+                        subfolderInfos.append(info)
+                    }
+                }
+                return subfolderInfos
             }
+            result.append(contentsOf: subfolderInfos)
         }
         return result
     }
 
-    //MARK: - Recursively calculates the total size of a directory (in bytes).
+    //MARK: - Calculating total size of directory
     private func directorySize(at url: URL) async throws -> Int64 {
-        var size: Int64 = 0
-        let resourceKeys: [URLResourceKey] = [.isDirectoryKey, .fileSizeKey]
-
-        guard let enumerator = fileManager.enumerator(at: url, includingPropertiesForKeys: resourceKeys, options: [.skipsHiddenFiles]) else {
-            return 0
-        }
-
-        for case let fileURL as URL in enumerator {
-            let resourceValues = try fileURL.resourceValues(forKeys: Set(resourceKeys))
-            if resourceValues.isDirectory == true {
-                continue
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global(qos: .utility).async {
+                var total: Int64 = 0
+                guard let enumerator = fileManager.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey, .totalFileAllocatedSizeKey], options: [.skipsHiddenFiles]) else {
+                    continuation.resume(returning: 0)
+                    return
+                }
+                for case let fileURL as URL in enumerator {
+                    if Task.isCancelled {
+                        continuation.resume(throwing: CancellationError())
+                        return
+                    }
+                    autoreleasepool {
+                        if let size = try? fileURL.resourceValues(forKeys: [.fileSizeKey]).fileSize {
+                            total += Int64(size)
+                        }
+                    }
+                }
+                continuation.resume(returning: total)
             }
-            if let fileSize = resourceValues.fileSize {
-                size += Int64(fileSize)
-            }
         }
-        return size
     }
 }
 

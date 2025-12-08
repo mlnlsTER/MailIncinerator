@@ -1,10 +1,8 @@
 import Foundation
 
 public protocol CacheDeleterProtocol {
-    /// Permanently delete given URLs. Throws on first failure.
     func deletePermanently(urls: [URL]) async throws
 
-    /// Move given URLs to Trash.
     func moveToTrash(urls: [URL]) async throws
 }
 
@@ -28,9 +26,10 @@ public class MailCacheDeleter: CacheDeleterProtocol {
     }
 
     private func ensureInsideBase(_ url: URL) throws {
-        let base = baseCacheURL.standardizedFileURL.path
-        let candidate = url.standardizedFileURL.path
-        guard candidate.hasPrefix(base) else { throw Error.outsideBasePath(url) }
+        let base = baseCacheURL.standardizedFileURL.resolvingSymlinksInPath().pathComponents
+        let candidate = url.standardizedFileURL.resolvingSymlinksInPath().pathComponents
+        guard candidate.starts(with: base) else { throw Error.outsideBasePath(url) }
+        
     }
 
     public func deletePermanently(urls: [URL]) async throws {
