@@ -1,3 +1,10 @@
+//
+//  FullDiskAccessHelpView.swift
+//  MailCleaner
+//
+//  Created by mlnlsTER on 06.11.2025.
+//
+
 import SwiftUI
 
 struct FullDiskAccessHelpView: View {

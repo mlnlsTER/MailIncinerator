@@ -1,3 +1,10 @@
+//
+//  ViewModel.swift
+//  MailCleaner
+//
+//  Created by mlnlsTER on 06.11.2025.
+//
+
 import Foundation
 import AppKit
 import Combine
@@ -37,7 +44,7 @@ final class MailCleanerViewModel: ObservableObject {
         return nil
     }
 
-    /// Returns URL for Mail folder and whether access has been started (if needed)
+    // Returns URL for Mail folder and whether access has been started (if needed)
     func mailFolderURLForAccess() -> (url: URL, needsStop: Bool)? {
         switch dependencies.mode {
         case .appstore:
@@ -129,7 +136,6 @@ final class MailCleanerViewModel: ObservableObject {
             cacheFolders.removeAll()
             totalSize = 0
         } catch {
-            // Print detailed error info
             if let mailError = error as? MailCacheDeleter.Error {
                 switch mailError {
                 case .outsideBasePath(let url):

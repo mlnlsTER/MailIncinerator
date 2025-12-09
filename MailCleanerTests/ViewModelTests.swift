@@ -1,3 +1,10 @@
+//
+//  ViewModelTests.swift
+//  MailScannerTests
+//
+//  Created by mlnlsTER on 30.10.2025.
+//
+
 import XCTest
 @testable import MailCleaner
 
@@ -7,13 +14,18 @@ final class ViewModelTests: XCTestCase {
     var deleter: MockDeleter!
     var sutMAS: MailCleanerViewModel!
     var sutPublic: MailCleanerViewModel!
-
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         scanner = MockScanner()
         deleter = MockDeleter()
-        sutMAS = MailCleanerViewModel(mode: .appStore, scanner: scanner, deleter: deleter)
-        sutPublic = MailCleanerViewModel(mode: .public, scanner: scanner, deleter: deleter)
+        let tempURL = URL(fileURLWithPath: "/tmp")
+        sutMAS = MailCleanerViewModel(
+            dependencies: MockDependencies(mode: .appstore, baseURL: nil, scanner: scanner, deleter: deleter)
+        )
+        sutPublic = MailCleanerViewModel(
+            dependencies: MockDependencies(mode: .public, baseURL: tempURL, scanner: scanner, deleter: deleter)
+        )
     }
 
     override func tearDownWithError() throws {

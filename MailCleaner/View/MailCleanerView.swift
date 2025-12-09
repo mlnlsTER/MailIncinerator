@@ -2,7 +2,7 @@
 //  MailCleanerView.swift
 //  MailCleaner
 //
-//  Created by Zhdan Baliuk on 06.11.2025.
+//  Created by mlnlsTER on 06.11.2025.
 //
 
 import SwiftUI

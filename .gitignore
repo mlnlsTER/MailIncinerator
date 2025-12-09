@@ -1,0 +1,59 @@
+## macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## Xcode
+xcuserdata/
+xcshareddata/WorkspaceSettings.xcsettings
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+## Xcode Derived data and build output
+DerivedData/
+build/
+Build/
+*.ipa
+*.xcarchive
+
+## Swift Package Manager
+.swiftpm/
+.build/
+
+## CocoaPods (если появится)
+Pods/
+Podfile.lock
+
+## Carthage
+Carthage/Build/
+
+## Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+## Logs
+*.log
+
+## Simulator artifacts
+Library/Developer/CoreSimulator/Devices/*/data/Containers/Data/Application/*/tmp/
+Library/Developer/CoreSimulator/Devices/*/data/Containers/Bundle/Application/*/tmp/
+
+## Temporary
+*.swp
+*.swo
+*.tmp
+
+## Bundles
+*.docset
+
+## Misc from Xcode 15–16+
+*.xcnotes
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
+## Prevent pushing unnecessary user state files
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/

@@ -1,8 +1,8 @@
 //
-//  MailScannerTests.swift
+//  MailCacheScannerTests.swift
 //  MailScannerTests
 //
-//  Created by Zhdan Baliuk on 30.10.2025.
+//  Created by mlnlsTER on 30.10.2025.
 //
 
 import XCTest
@@ -39,57 +39,60 @@ final class MailCacheScannerTests: XCTestCase {
     }
     
     func testIgnoresMailDataSubfolder() async throws {
-           let vDir = tempDir.appendingPathComponent("V10")
-           let mailDataDir = vDir.appendingPathComponent("MailData")
-           try FileManager.default.createDirectory(at: mailDataDir, withIntermediateDirectories: true)
+        let vDir = tempDir.appendingPathComponent("V10")
+        let mailDataDir = vDir.appendingPathComponent("MailData")
+        try FileManager.default.createDirectory(at: mailDataDir, withIntermediateDirectories: true)
 
-           let cacheDir = vDir.appendingPathComponent("TestCache")
-           try FileManager.default.createDirectory(at: cacheDir, withIntermediateDirectories: true)
-           try createFile(at: "V10/TestCache/file.bin", size: 1024)
+        let cacheDir = vDir.appendingPathComponent("TestCache")
+        try FileManager.default.createDirectory(at: cacheDir, withIntermediateDirectories: true)
+        try createFile(at: "V10/TestCache/file.bin", size: 1024)
 
         let scanner = await MailCacheScanner(baseCacheURL: tempDir)
-           let result = try await scanner.scan()
+        let result = try await scanner.scan()
 
-           XCTAssertEqual(result.count, 1)
-           XCTAssertEqual(result.first?.url.lastPathComponent, "TestCache")
-           XCTAssertEqual(result.first?.size, 1024)
-       }
+        XCTAssertEqual(result.count, 1)
+        await MainActor.run {
+            XCTAssertEqual(result.first?.url.lastPathComponent, "TestCache")
+        }
+        await MainActor.run {
+            XCTAssertEqual(result.first?.size, 1024)
+        }
+    }
 
-       func testThrowsBaseNotFound() async {
-           let notExisting = tempDir.appendingPathComponent("NoSuchDir")
-           let scanner = await MailCacheScanner(baseCacheURL: notExisting)
-           do {
-               _ = try await scanner.scan()
-               XCTFail("Expected baseNotFound")
-           } catch MailCacheScanner.Error.baseNotFound {
-               // ok
-           } catch {
-               XCTFail("Unexpected error: \(error)")
-           }
-       }
+    func testThrowsBaseNotFound() async {
+        let notExisting = tempDir.appendingPathComponent("NoSuchDir")
+        let scanner = await MailCacheScanner(baseCacheURL: notExisting)
+        do {
+            _ = try await scanner.scan()
+            XCTFail("Expected baseNotFound")
+        } catch MailCacheScanner.Error.baseNotFound {
+            // ok
+        } catch {
+            XCTFail("Unexpected error: \(error)")
+        }
+    }
 
-       func testEmptyBaseReturnsEmptyArray() async throws {
-           let scanner = await MailCacheScanner(baseCacheURL: tempDir)
-           let result = try await scanner.scan()
-           XCTAssertTrue(result.isEmpty)
-       }
+    func testEmptyBaseReturnsEmptyArray() async throws {
+        let scanner = await MailCacheScanner(baseCacheURL: tempDir)
+        let result = try await scanner.scan()
+        XCTAssertTrue(result.isEmpty)
+    }
 
-       func testDirectorySizeCalculation() async throws {
-           try FileManager.default.createDirectory(at: tempDir.appendingPathComponent("V10"), withIntermediateDirectories: true)
-           let sub = tempDir.appendingPathComponent("Dir")
-           try FileManager.default.createDirectory(at: sub, withIntermediateDirectories: true)
-           try createFile(at: "V10/Dir/a.bin", size: 200)
-           try createFile(at: "V10/Dir/b.bin", size: 300)
+    func testDirectorySizeCalculation() async throws {
+        try FileManager.default.createDirectory(at: tempDir.appendingPathComponent("V10"), withIntermediateDirectories: true)
+        let sub = tempDir.appendingPathComponent("Dir")
+        try FileManager.default.createDirectory(at: sub, withIntermediateDirectories: true)
+        try createFile(at: "V10/Dir/a.bin", size: 200)
+        try createFile(at: "V10/Dir/b.bin", size: 300)
 
-           let scanner = await MailCacheScanner(baseCacheURL: tempDir)
-           let result = try await scanner.scan()
-           
-           var size: Int64 = 0
-           for res in result {
-               await size += res.size
-           }
-           
-           XCTAssertEqual(size, 500)
-       }
-
+        let scanner = await MailCacheScanner(baseCacheURL: tempDir)
+        let result = try await scanner.scan()
+        
+        var size: Int64 = 0
+        for res in result {
+            await size += res.size
+        }
+        
+        XCTAssertEqual(size, 500)
+    }
 }
