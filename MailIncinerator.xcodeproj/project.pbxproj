@@ -17,8 +17,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6035D6E82EB381CF00CEB051 /* MailCleanerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailCleanerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		606626572EA529C200CB3C42 /* MailCleaner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailCleaner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6035D6E82EB381CF00CEB051 /* Mail IncineratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mail IncineratorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		606626572EA529C200CB3C42 /* Mail Incinerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mail Incinerator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607C7F2D2EB62E2800511774 /* MailCleaner.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = MailCleaner.xctestplan; path = ../MailCleaner.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,8 +66,8 @@
 		606626582EA529C200CB3C42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				606626572EA529C200CB3C42 /* MailCleaner.app */,
-				6035D6E82EB381CF00CEB051 /* MailCleanerTests.xctest */,
+				606626572EA529C200CB3C42 /* Mail Incinerator.app */,
+				6035D6E82EB381CF00CEB051 /* Mail IncineratorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,9 +75,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6035D6E72EB381CF00CEB051 /* MailCleanerTests */ = {
+		6035D6E72EB381CF00CEB051 /* Mail IncineratorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "MailCleanerTests" */;
+			buildConfigurationList = 6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "Mail IncineratorTests" */;
 			buildPhases = (
 				6035D6E42EB381CF00CEB051 /* Sources */,
 				6035D6E52EB381CF00CEB051 /* Frameworks */,
@@ -91,16 +91,16 @@
 			fileSystemSynchronizedGroups = (
 				6035D6E92EB381CF00CEB051 /* MailCleanerTests */,
 			);
-			name = MailCleanerTests;
+			name = "Mail IncineratorTests";
 			packageProductDependencies = (
 			);
 			productName = MailCleanerTests;
-			productReference = 6035D6E82EB381CF00CEB051 /* MailCleanerTests.xctest */;
+			productReference = 6035D6E82EB381CF00CEB051 /* Mail IncineratorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		606626562EA529C200CB3C42 /* MailCleaner */ = {
+		606626562EA529C200CB3C42 /* Mail Incinerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "MailCleaner" */;
+			buildConfigurationList = 606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "Mail Incinerator" */;
 			buildPhases = (
 				606626532EA529C200CB3C42 /* Sources */,
 				606626542EA529C200CB3C42 /* Frameworks */,
@@ -113,11 +113,11 @@
 			fileSystemSynchronizedGroups = (
 				606626592EA529C200CB3C42 /* MailCleaner */,
 			);
-			name = MailCleaner;
+			name = "Mail Incinerator";
 			packageProductDependencies = (
 			);
 			productName = MailCleaner;
-			productReference = 606626572EA529C200CB3C42 /* MailCleaner.app */;
+			productReference = 606626572EA529C200CB3C42 /* Mail Incinerator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +139,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 606626522EA529C200CB3C42 /* Build configuration list for PBXProject "MailCleaner" */;
+			buildConfigurationList = 606626522EA529C200CB3C42 /* Build configuration list for PBXProject "Mail Incinerator" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -155,8 +155,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				606626562EA529C200CB3C42 /* MailCleaner */,
-				6035D6E72EB381CF00CEB051 /* MailCleanerTests */,
+				606626562EA529C200CB3C42 /* Mail Incinerator */,
+				6035D6E72EB381CF00CEB051 /* Mail IncineratorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -198,7 +198,7 @@
 /* Begin PBXTargetDependency section */
 		6035D6ED2EB381CF00CEB051 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 606626562EA529C200CB3C42 /* MailCleaner */;
+			target = 606626562EA529C200CB3C42 /* Mail Incinerator */;
 			targetProxy = 6035D6EC2EB381CF00CEB051 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -221,7 +221,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailCleaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailCleaner";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
 			};
 			name = Debug;
 		};
@@ -242,7 +242,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailCleaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailCleaner";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
 			};
 			name = Release;
 		};
@@ -404,7 +404,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MailCleaner;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail Incinerator";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,7 +456,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MailCleaner;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail Incinerator";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -565,7 +565,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MailCleaner;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail Incinerator";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -603,7 +603,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailCleaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailCleaner";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
 			};
 			name = AppStoreRelease;
 		};
@@ -699,7 +699,7 @@
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = MailCleaner;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mail Incinerator";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -737,14 +737,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailCleaner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailCleaner";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
 			};
 			name = PublicRelease;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "MailCleanerTests" */ = {
+		6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "Mail IncineratorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6035D6EF2EB381CF00CEB051 /* Debug */,
@@ -755,7 +755,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		606626522EA529C200CB3C42 /* Build configuration list for PBXProject "MailCleaner" */ = {
+		606626522EA529C200CB3C42 /* Build configuration list for PBXProject "Mail Incinerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				606626602EA529C300CB3C42 /* Debug */,
@@ -766,7 +766,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "MailCleaner" */ = {
+		606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "Mail Incinerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				606626632EA529C300CB3C42 /* Debug */,
