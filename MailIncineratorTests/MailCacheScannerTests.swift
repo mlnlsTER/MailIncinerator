@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import MailCleaner
+@testable import MailIncinerator
 
 final class MailCacheScannerTests: XCTestCase {
     
