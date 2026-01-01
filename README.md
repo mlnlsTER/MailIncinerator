@@ -2,7 +2,7 @@
 
 macOS utility for scanning and deleting Apple Mail cache data.
 
-<APP ICON>
+<img width="512" height="512" alt="MailCleanerIcon-macOS-Default-512x512@1x" src="https://github.com/user-attachments/assets/9219ac4e-ccb5-44eb-803d-bec10ca3272c" />
 
 ---
 
@@ -30,7 +30,7 @@ The tool does **not** modify mail databases, accounts, or message content.
 
 ## Screenshots
 
-<Screenshots>
+<img width="1012" height="562" alt="MailIncinerator" src="https://github.com/user-attachments/assets/bb149899-0efd-47a3-b7c3-69523afc6255" />
 
 ---
 
