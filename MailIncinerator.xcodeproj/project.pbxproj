@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		606E6D8C2EF406AC00B08ABC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 606E6D8B2EF406AC00B08ABC /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		6035D6EC2EB381CF00CEB051 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -17,20 +21,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6035D6E82EB381CF00CEB051 /* Mail IncineratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mail IncineratorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		606626572EA529C200CB3C42 /* Mail Incinerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mail Incinerator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		607C7F2D2EB62E2800511774 /* MailCleaner.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = MailCleaner.xctestplan; path = ../MailCleaner.xctestplan; sourceTree = "<group>"; };
+		6035D6E82EB381CF00CEB051 /* MailIncineratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MailIncineratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		606626572EA529C200CB3C42 /* MailIncinerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MailIncinerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		606E6D8B2EF406AC00B08ABC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		607C7F2D2EB62E2800511774 /* MailIncinerator.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = MailIncinerator.xctestplan; path = ../MailIncinerator.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		6035D6E92EB381CF00CEB051 /* MailCleanerTests */ = {
+		6035D6E92EB381CF00CEB051 /* MailIncineratorTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MailCleanerTests;
+			path = MailIncineratorTests;
 			sourceTree = "<group>";
 		};
-		606626592EA529C200CB3C42 /* MailCleaner */ = {
+		606626592EA529C200CB3C42 /* MailIncinerator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MailCleaner;
+			path = MailIncinerator;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -56,9 +61,10 @@
 		6066264E2EA529C200CB3C42 = {
 			isa = PBXGroup;
 			children = (
-				607C7F2D2EB62E2800511774 /* MailCleaner.xctestplan */,
-				606626592EA529C200CB3C42 /* MailCleaner */,
-				6035D6E92EB381CF00CEB051 /* MailCleanerTests */,
+				606E6D8B2EF406AC00B08ABC /* README.md */,
+				607C7F2D2EB62E2800511774 /* MailIncinerator.xctestplan */,
+				606626592EA529C200CB3C42 /* MailIncinerator */,
+				6035D6E92EB381CF00CEB051 /* MailIncineratorTests */,
 				606626582EA529C200CB3C42 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,8 +72,8 @@
 		606626582EA529C200CB3C42 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				606626572EA529C200CB3C42 /* Mail Incinerator.app */,
-				6035D6E82EB381CF00CEB051 /* Mail IncineratorTests.xctest */,
+				606626572EA529C200CB3C42 /* MailIncinerator.app */,
+				6035D6E82EB381CF00CEB051 /* MailIncineratorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6035D6E72EB381CF00CEB051 /* Mail IncineratorTests */ = {
+		6035D6E72EB381CF00CEB051 /* MailIncineratorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "Mail IncineratorTests" */;
+			buildConfigurationList = 6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "MailIncineratorTests" */;
 			buildPhases = (
 				6035D6E42EB381CF00CEB051 /* Sources */,
 				6035D6E52EB381CF00CEB051 /* Frameworks */,
@@ -89,18 +95,18 @@
 				6035D6ED2EB381CF00CEB051 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				6035D6E92EB381CF00CEB051 /* MailCleanerTests */,
+				6035D6E92EB381CF00CEB051 /* MailIncineratorTests */,
 			);
-			name = "Mail IncineratorTests";
+			name = MailIncineratorTests;
 			packageProductDependencies = (
 			);
 			productName = MailCleanerTests;
-			productReference = 6035D6E82EB381CF00CEB051 /* Mail IncineratorTests.xctest */;
+			productReference = 6035D6E82EB381CF00CEB051 /* MailIncineratorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		606626562EA529C200CB3C42 /* Mail Incinerator */ = {
+		606626562EA529C200CB3C42 /* MailIncinerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "Mail Incinerator" */;
+			buildConfigurationList = 606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "MailIncinerator" */;
 			buildPhases = (
 				606626532EA529C200CB3C42 /* Sources */,
 				606626542EA529C200CB3C42 /* Frameworks */,
@@ -111,13 +117,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				606626592EA529C200CB3C42 /* MailCleaner */,
+				606626592EA529C200CB3C42 /* MailIncinerator */,
 			);
-			name = "Mail Incinerator";
+			name = MailIncinerator;
 			packageProductDependencies = (
 			);
 			productName = MailCleaner;
-			productReference = 606626572EA529C200CB3C42 /* Mail Incinerator.app */;
+			productReference = 606626572EA529C200CB3C42 /* MailIncinerator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +145,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 606626522EA529C200CB3C42 /* Build configuration list for PBXProject "Mail Incinerator" */;
+			buildConfigurationList = 606626522EA529C200CB3C42 /* Build configuration list for PBXProject "MailIncinerator" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -155,8 +161,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				606626562EA529C200CB3C42 /* Mail Incinerator */,
-				6035D6E72EB381CF00CEB051 /* Mail IncineratorTests */,
+				606626562EA529C200CB3C42 /* MailIncinerator */,
+				6035D6E72EB381CF00CEB051 /* MailIncineratorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -173,6 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				606E6D8C2EF406AC00B08ABC /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +205,7 @@
 /* Begin PBXTargetDependency section */
 		6035D6ED2EB381CF00CEB051 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 606626562EA529C200CB3C42 /* Mail Incinerator */;
+			target = 606626562EA529C200CB3C42 /* MailIncinerator */;
 			targetProxy = 6035D6EC2EB381CF00CEB051 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -221,7 +228,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailIncinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailIncinerator";
 			};
 			name = Debug;
 		};
@@ -242,7 +249,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailIncinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailIncinerator";
 			};
 			name = Release;
 		};
@@ -380,6 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -413,7 +421,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = home.MailCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = home.MailIncinerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -465,7 +473,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = home.MailCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = home.MailIncinerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -544,7 +552,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -574,7 +582,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = home.MailCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = home.MailIncinerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -603,7 +611,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailIncinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailIncinerator";
 			};
 			name = AppStoreRelease;
 		};
@@ -708,7 +716,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 0.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = home.MailCleaner;
+				PRODUCT_BUNDLE_IDENTIFIER = home.MailIncinerator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -737,14 +745,14 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mail Incinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mail Incinerator";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MailIncinerator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MailIncinerator";
 			};
 			name = PublicRelease;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "Mail IncineratorTests" */ = {
+		6035D6EE2EB381CF00CEB051 /* Build configuration list for PBXNativeTarget "MailIncineratorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6035D6EF2EB381CF00CEB051 /* Debug */,
@@ -755,7 +763,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		606626522EA529C200CB3C42 /* Build configuration list for PBXProject "Mail Incinerator" */ = {
+		606626522EA529C200CB3C42 /* Build configuration list for PBXProject "MailIncinerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				606626602EA529C300CB3C42 /* Debug */,
@@ -766,7 +774,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "Mail Incinerator" */ = {
+		606626622EA529C300CB3C42 /* Build configuration list for PBXNativeTarget "MailIncinerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				606626632EA529C300CB3C42 /* Debug */,

@@ -1,6 +1,6 @@
 //
 //  FullDiskAccessHelpView.swift
-//  MailCleaner
+//  MailIncinerator
 //
 //  Created by mlnlsTER on 06.11.2025.
 //

@@ -1,6 +1,6 @@
 //
-//  MailCleanerDependencies.swift
-//  MailCleaner
+//  MailIncineratorDependencies.swift
+//  MailIncinerator
 //
 //  Created by mlnlsTER on 21.11.2025.
 //

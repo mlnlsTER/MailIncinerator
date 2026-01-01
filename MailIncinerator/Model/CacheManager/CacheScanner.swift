@@ -1,6 +1,6 @@
 //
 //  CacheScanner.swift
-//  MailCleaner
+//  MailIncinerator
 //
 //  Created by mlnlsTER on 15.11.2025.
 //

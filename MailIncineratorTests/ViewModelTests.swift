@@ -12,18 +12,18 @@ import XCTest
 final class ViewModelTests: XCTestCase {
     var scanner: MockScanner!
     var deleter: MockDeleter!
-    var sutMAS: MailCleanerViewModel!
-    var sutPublic: MailCleanerViewModel!
+    var sutMAS: MailIncineratorViewModel!
+    var sutPublic: MailIncineratorViewModel!
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         scanner = MockScanner()
         deleter = MockDeleter()
         let tempURL = URL(fileURLWithPath: "/tmp")
-        sutMAS = MailCleanerViewModel(
+        sutMAS = MailIncineratorViewModel(
             dependencies: MockDependencies(mode: .appstore, baseURL: nil, scanner: scanner, deleter: deleter)
         )
-        sutPublic = MailCleanerViewModel(
+        sutPublic = MailIncineratorViewModel(
             dependencies: MockDependencies(mode: .public, baseURL: tempURL, scanner: scanner, deleter: deleter)
         )
     }

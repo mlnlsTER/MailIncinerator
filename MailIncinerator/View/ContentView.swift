@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  MailCleaner
+//  MailIncinerator
 //
 //  Created by mlnlsTER on 06.11.2025.
 //
@@ -9,11 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @StateObject private var vm: MailIncineratorViewModel
     @State private var selectedTab = 0
+    
+    init(dependencies: MailCleanerDependencies) {
+        _vm = StateObject(wrappedValue: MailIncineratorViewModel(dependencies: dependencies))
+    }
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            MailCleanerView()
+            MailIncineratorView(vm: vm)
                 .tabItem {
                     VStack {
                         Image(systemName: "wand.and.rays")
@@ -22,7 +27,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(0)
-            InfoTabView()
+            InfoTabView(vm: vm)
                 .tabItem {
                     VStack {
                         Image(systemName: "exclamationmark.bubble")
@@ -31,9 +36,19 @@ struct ContentView: View {
                 }
                 .tag(1)
         }
+        .onAppear { Task { await vm.checkMailFolderAccess() } }
     }
 }
 
+
 #Preview {
-    ContentView()
+    ContentView(
+        dependencies: MockDependencies(
+            mode: .public,
+            baseURL: nil,
+            scanner: MockScanner(),
+            deleter: MockDeleter()
+        )
+    )
 }
+

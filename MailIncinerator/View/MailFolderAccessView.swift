@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct MailFolderAccessView: View {
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            VStack(spacing: 16) {
+                Text("Folder Access")
+                    .font(.headline)
+                Text(CacheConstants.chooseFolderInstruction)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .top)
+                Button("Back") { dismiss() }
+            }
+        }
     }
 }
 

@@ -1,6 +1,6 @@
 //
-//  MailCleanerView.swift
-//  MailCleaner
+//  MailIncineratorView.swift
+//  MailIncinerator
 //
 //  Created by mlnlsTER on 06.11.2025.
 //
@@ -9,15 +9,21 @@ import SwiftUI
 import AppKit
 
 @MainActor
-struct MailCleanerView: View {
+struct MailIncineratorView: View {
     
     @State private var showDeleteAlert: Bool = false
     @State private var deletePermanently: Bool = false
-    @StateObject var vm = MailCleanerViewModel(dependencies: dependencies)
+    @StateObject var vm: MailIncineratorViewModel
     
     var body: some View {
         if vm.fullDiskAccessRequired {
-            FullDiskAccessHelpView()
+            switch vm.dependencies.mode {
+            case .public:
+                FullDiskAccessHelpView()
+            case .appstore:
+                MailFolderAccessView()
+            }
+
         } else {
             VStack {
                 Button("Scan") { Task { await vm.scan() } }
@@ -47,16 +53,30 @@ struct MailCleanerView: View {
                         }
                     }
                     .frame(maxHeight: 250)
-                    
-                    Text("Caches: \(ByteCountFormatter.string(fromByteCount: vm.totalSize, countStyle: .file))")
-                        .font(.headline)
-                        .foregroundStyle(Color(.systemGray))
                 }
                 
-                
+                Group {
+                    if let result = vm.lastOperationResult {
+                        switch result {
+                        case .success(let summary):
+                            Text(summary)
+                                .font(.headline)
+                                .foregroundStyle(.green)
+                                .opacity(0.7)
+                        case .empty:
+                            Text("Nothing to clean")
+                                .font(.headline)
+                                .foregroundStyle(.secondary)
+                        case .failure(let message):
+                            Text(message)
+                                .font(.headline)
+                                .foregroundStyle(.red)
+                        }
+                    }
+                }.padding()
                 
                 Toggle("Delete permanently", isOn: $deletePermanently)
-                    .onChange(of: deletePermanently) { newValue in
+                    .onChange(of: deletePermanently) { _, newValue in
                         if newValue {
                             showDeleteAlert = true
                         }
@@ -78,5 +98,14 @@ struct MailCleanerView: View {
 }
 
 #Preview {
-    MailCleanerView()
+    MailIncineratorView(
+        vm: MailIncineratorViewModel(
+            dependencies: MockDependencies(
+                mode: .public,
+                baseURL: nil,
+                scanner: MockScanner(),
+                deleter: MockDeleter()
+            )
+        )
+    )
 }
